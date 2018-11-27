@@ -1,3 +1,14 @@
+---
+title: "scratch MLB Strikeout Investigation"
+author: "Michael Calabro"
+date: "11/27/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
 #I will try to make this scratch doc read like a story for someone to follow
 #Hopefully this will make my comments informative and keep me organized
 
@@ -234,11 +245,5 @@ top_paid_batter_totals %>%
 #It seems like These top batters are staying pretty consistent with HR per AB
 #Their batting averages have fallen decently since '06, but still seem to be
 #on par with a historical trend around .280 (since 1985)
+```
 
-    
-    
-    
-    
-    
-    
-    
