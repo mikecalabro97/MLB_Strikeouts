@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ```{r}
-#I will try to make this scratch doc read like a story for someone to follow
+#I will try to make this rmarkdown read like a story for someone to follow
 #Hopefully this will make my comments informative and keep me organized
 
 #READ THE COMMENTS, THEN COMMAND-ENTER THE CODE UNDERNEATH TO FOLLOW ALONG
@@ -278,5 +278,48 @@ curve_velo_summaries %>%
   ggplot(aes(x = season)) +
   geom_point(aes(y = avg_curveball_velo, color = "Average Curveball Velo")) +
   geom_point(aes(y = max_curveball_velo, color = "Max Curveball Velo"))
+
+#Now I am going to add some advanced batting stats from fangraphs
+#I want to see if fly ball % has increased over the years since 2007
+#I'm thinking more people are swinging for the fences, trying to hit homeruns,
+#sacrificing their SO percentage for the chance to get a run in one swing
+
+adv_batting_stats <- read_csv("advanced_batting_stats.csv") %>%
+  clean_names()
+
+fly_balls <- adv_batting_stats %>%
+  filter(! is.na(fb_percent)) %>%
+  group_by(season) %>%
+  summarize(mean_flyball_percent = mean(fb_percent),
+            mean_groundball_per = mean(gb_percent),
+            mean_linedrive_per = mean(ld_percent))
+
+fly_balls %>%
+  kable
+
+#Not much there, but now I want to see if exit velocity off batted balls has increased
+#And if batters have been seeing less fastballs over time?
+
+pitches_seen <- read_csv("pitches_seen.csv") %>%
+  clean_names()
+
+fastball_percent_summary <- pitches_seen %>%
+  group_by(season) %>%
+  summarize(avg_fastball_percentage = mean(fb_percent), avg_curveball_percentage = mean(cb_percent))
+
+fastball_percent_summary %>%
+  kable()
+
+#NOW we're getting somewhere
+
+fastball_percent_summary %>%
+  ggplot(aes(x = season, y = avg_fastball_percentage)) + 
+  geom_point(aes(color = "Fastball Percentage")) +
+  geom_smooth(method = "lm")
+
+fastball_percent_summary %>%
+  ggplot(aes(x = season, y = avg_curveball_percentage)) + 
+  geom_point(aes(color = "Curveball Percentage")) +
+  geom_smooth(method = "lm")
 ```
 
