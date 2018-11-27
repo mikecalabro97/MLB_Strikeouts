@@ -245,5 +245,38 @@ top_paid_batter_totals %>%
 #It seems like These top batters are staying pretty consistent with HR per AB
 #Their batting averages have fallen decently since '06, but still seem to be
 #on par with a historical trend around .280 (since 1985)
+
+#Now I am going to download some data from fangraphs.com on pitch velocity
+#I am thinking that maybe pitchers have started to throw harder over the past years
+#Or maybe they're throwing more offspeed pitches?
+
+pitch_velocities <- read_csv("pitch_velocities.csv") %>%
+  clean_names()
+
+velo_summaries <- pitch_velocities %>%
+  filter(! is.na(v_fa)) %>%
+  group_by(season) %>%
+  summarize(avg_fastball_velo = mean(v_fa), max_fastball_velo = max(v_fa))
+
+velo_summaries %>%
+  kable()
+
+velo_summaries %>%
+  ggplot(aes(x = season)) +
+  geom_point(aes(y = avg_fastball_velo, color = "Average Fastball Velo")) +
+  geom_point(aes(y = max_fastball_velo, color = "Max Fastball Velo"))
+
+curve_velo_summaries <- pitch_velocities %>%
+  filter(! is.na(v_cu)) %>%
+  group_by(season) %>%
+  summarize(avg_curveball_velo = mean(v_cu), max_curveball_velo = max(v_cu))
+
+curve_velo_summaries %>%
+  kable()
+
+curve_velo_summaries %>%
+  ggplot(aes(x = season)) +
+  geom_point(aes(y = avg_curveball_velo, color = "Average Curveball Velo")) +
+  geom_point(aes(y = max_curveball_velo, color = "Max Curveball Velo"))
 ```
 
