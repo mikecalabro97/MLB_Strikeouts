@@ -334,5 +334,32 @@ exit_velocity %>%
 
 #There is simply not enough data on this that I can find to see the progression over time
 #but the data may be interesting nonetheless, so I will leave it here
+
+
+#This data from fangraphs shows different swing percentages for players
+#The three I look at are % of pitches outside the zone that players swing at
+#number of swings / total putches, and times made contact / total swings
+#I looked at the mean from year to year in these categories
+
+swing_stats <- read_csv("swing_stats.csv") %>%
+  clean_names()
+
+swing_summaries <- swing_stats %>%
+  group_by(season) %>%
+  summarize(swing_outside_zone = mean(o_swing_percent),
+            contact_percent = mean(contact_percent),
+            swing_percent = mean(swing_percent)) 
+
+swing_summaries %>%
+  ggplot(aes(x = season)) +
+  geom_point(aes(y = swing_outside_zone, color = ""))
+
+swing_summaries %>%
+  ggplot(aes(x = season)) +
+  geom_point(aes(y = contact_percent, color = ""))
+
+swing_summaries %>%
+  ggplot(aes(x = season)) +
+  geom_point(aes(y = swing_percent, color = ""))
 ```
 
