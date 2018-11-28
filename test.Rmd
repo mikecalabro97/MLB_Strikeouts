@@ -8,11 +8,11 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-```{r}
+
+```{r warning=FALSE, message=FALSE}
 #I will try to make this rmarkdown read like a story for someone to follow
 #Hopefully this will make my comments informative and keep me organized
 
-#READ THE COMMENTS, THEN COMMAND-ENTER THE CODE UNDERNEATH TO FOLLOW ALONG
 
 #These are libraries which contain functions I suspect I need
 #They do not need to be in this scratch file, but they're here for reference
@@ -204,8 +204,7 @@ total_max_salary_players <- salaries_and_stats %>%
   group_by(year_id) %>% 
   summarize(total_players = n()) 
 
-total_max_salary_players %>%
-  kable()
+total_max_salary_players 
 
 #Now I want to see how many are pitchers
 #Tod do this, I will filter out players whose pitching stats are NA (here, wins suffices)
@@ -215,8 +214,7 @@ total_max_salary_pitchers <- salaries_and_stats %>%
   group_by(year_id) %>% 
   summarize(total_pitchers = n()) 
 
-total_max_salary_pitchers %>%
-  kable()
+total_max_salary_pitchers 
 
 total_max_salary_pitchers %>%
   ggplot(aes(x = year_id, y = total_pitchers)) + geom_point()
