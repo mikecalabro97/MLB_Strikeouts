@@ -1,4 +1,4 @@
-#I will try to make this scratch doc read like a story for someone to follow
+#I will try to make this rmarkdown read like a story for someone to follow
 #Hopefully this will make my comments informative and keep me organized
 
 #READ THE COMMENTS, THEN COMMAND-ENTER THE CODE UNDERNEATH TO FOLLOW ALONG
@@ -178,6 +178,8 @@ top_players <- all_players %>%
 
 salaries_and_stats <- left_join(max_salaries, top_players)
 
+salaries_and_stats
+
 #Now we have top paid players for each year and their stats
 
 #Some things I want to investigate -
@@ -234,6 +236,95 @@ top_paid_batter_totals %>%
 #It seems like These top batters are staying pretty consistent with HR per AB
 #Their batting averages have fallen decently since '06, but still seem to be
 #on par with a historical trend around .280 (since 1985)
+
+#Now I am going to download some data from fangraphs.com on pitch velocity
+#I am thinking that maybe pitchers have started to throw harder over the past years
+#Or maybe they're throwing more offspeed pitches?
+
+pitch_velocities <- read_csv("pitch_velocities.csv") %>%
+  clean_names()
+
+velo_summaries <- pitch_velocities %>%
+  filter(! is.na(v_fa)) %>%
+  group_by(season) %>%
+  summarize(avg_fastball_velo = mean(v_fa), max_fastball_velo = max(v_fa))
+
+velo_summaries %>%
+  kable()
+
+velo_summaries %>%
+  ggplot(aes(x = season)) +
+  geom_point(aes(y = avg_fastball_velo, color = "Average Fastball Velo")) +
+  geom_point(aes(y = max_fastball_velo, color = "Max Fastball Velo"))
+
+curve_velo_summaries <- pitch_velocities %>%
+  filter(! is.na(v_cu)) %>%
+  group_by(season) %>%
+  summarize(avg_curveball_velo = mean(v_cu), max_curveball_velo = max(v_cu))
+
+curve_velo_summaries %>%
+  kable()
+
+curve_velo_summaries %>%
+  ggplot(aes(x = season)) +
+  geom_point(aes(y = avg_curveball_velo, color = "Average Curveball Velo")) +
+  geom_point(aes(y = max_curveball_velo, color = "Max Curveball Velo"))
+
+#Now I am going to add some advanced batting stats from fangraphs
+#I want to see if fly ball % has increased over the years since 2007
+#I'm thinking more people are swinging for the fences, trying to hit homeruns,
+#sacrificing their SO percentage for the chance to get a run in one swing
+
+adv_batting_stats <- read_csv("advanced_batting_stats.csv") %>%
+  clean_names()
+
+fly_balls <- adv_batting_stats %>%
+  filter(! is.na(fb_percent)) %>%
+  group_by(season) %>%
+  summarize(mean_flyball_percent = mean(fb_percent),
+            mean_groundball_per = mean(gb_percent),
+            mean_linedrive_per = mean(ld_percent))
+
+fly_balls %>%
+  kable
+
+#Not much there, but now I want to see if exit velocity off batted balls has increased
+#And if batters have been seeing less fastballs over time?
+
+pitches_seen <- read_csv("pitches_seen.csv") %>%
+  clean_names()
+
+fastball_percent_summary <- pitches_seen %>%
+  group_by(season) %>%
+  summarize(avg_fastball_percentage = mean(fb_percent), avg_curveball_percentage = mean(cb_percent))
+
+fastball_percent_summary %>%
+  kable()
+
+#NOW we're getting somewhere
+
+fastball_percent_summary %>%
+  ggplot(aes(x = season, y = avg_fastball_percentage)) + 
+  geom_point(aes(color = "Fastball Percentage")) +
+  geom_smooth(method = "lm")
+
+fastball_percent_summary %>%
+  ggplot(aes(x = season, y = avg_curveball_percentage)) + 
+  geom_point(aes(color = "Curveball Percentage")) +
+  geom_smooth(method = "lm")
+
+#This next set of data I got from Statcast Baseball Savant
+#I want to see if average ball off bat velocity has increased year over year
+
+exit_velocity <- read_csv("exit_velocity.csv") %>%
+  clean_names()
+
+exit_velocity %>%
+  group_by(year) %>%
+  summarize(avg_exit_velo = mean(launch_speed))
+
+#There is simply not enough data on this that I can find to see the progression over time
+#but the data may be interesting nonetheless, so I will leave it here
 
     
     
