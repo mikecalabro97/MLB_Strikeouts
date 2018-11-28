@@ -189,6 +189,8 @@ top_players <- all_players %>%
 
 salaries_and_stats <- left_join(max_salaries, top_players)
 
+salaries_and_stats
+
 #Now we have top paid players for each year and their stats
 
 #Some things I want to investigate -
@@ -321,5 +323,18 @@ fastball_percent_summary %>%
   ggplot(aes(x = season, y = avg_curveball_percentage)) + 
   geom_point(aes(color = "Curveball Percentage")) +
   geom_smooth(method = "lm")
+
+#This next set of data I got from Statcast Baseball Savant
+#I want to see if average ball off bat velocity has increased year over year
+
+exit_velocity <- read_csv("exit_velocity.csv") %>%
+  clean_names()
+
+exit_velocity %>%
+  group_by(year) %>%
+  summarize(avg_exit_velo = mean(launch_speed))
+
+#There is simply not enough data on this that I can find to see the progression over time
+#but the data may be interesting nonetheless, so I will leave it here
 ```
 
