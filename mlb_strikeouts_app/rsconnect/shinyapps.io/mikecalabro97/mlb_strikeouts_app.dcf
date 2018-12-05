@@ -5,8 +5,8 @@ account: mikecalabro97
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 605167
-bundleId: 1743149
+bundleId: 1743289
 url: https://mikecalabro97.shinyapps.io/mlb_strikeouts_app/
-when: 1544031159.57682
+when: 1544033651.95826
 asMultiple: FALSE
 asStatic: FALSE
