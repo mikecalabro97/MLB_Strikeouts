@@ -17,8 +17,10 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
+      h4("GRAPH 1"),
+      
       sliderInput("year",
-                  "GRAPH 1 - Year Range:",
+                  "Year Range:",
                   min = 1918,
                   max = 2017,
                   value = c(2005, 2017),
@@ -36,10 +38,28 @@ ui <- fluidPage(
                     "Display Homeruns Per At Bat",
                     value = FALSE),
       
+      h4("Interesting Combos to View:"),
+      
+      h5("1. All Three Stats Since 1918"),
+      
+      h5("2. HRs and SOs from 1955-1965"),
+      
+      h5("3. HRs and SOs from 2005-2017"),
+      
+      h6("Many people believe that the increase in strikeouts per at bat 
+         over the years is due to batters swinging for homeruns more often, 
+         sacrificing their contact percentage for a chance to put one out of 
+         the park and earn a quick run. However, the strikeout and homerun data
+         from the 50s and 60s, and from '05-'17, seem to refute this claim."),
+      
+      h4("GRAPH 2"),
+      
       radioButtons("graph2",
-                   "GRAPH 2 - Which Pitch Graph Would You Like To View?",
+                   "Which Pitch Graph Would You Like To View?",
                    c("Pitch Velocity Graph", "Pitch Type Graph"),
                    selected = "Pitch Velocity Graph"),
+      
+      h4("Checkboxes For Pitch Velocity Graph"),
       
       checkboxInput("fb_avg",
                     "Display Average Fastball Velocity",
@@ -57,8 +77,10 @@ ui <- fluidPage(
                     "Display Max Curveball Velocity",
                     value = FALSE),
       
+      h4("Radio Buttons For Pitch Type Graph"),
+      
       radioButtons("type",
-                   "For Pitch Type Graph, Which Type of Pitch?",
+                   "Which Type of Pitch?",
                    c("Fastball", "Curveball"),
                    selected = "Fastball",
                    inline = TRUE)
@@ -68,7 +90,12 @@ ui <- fluidPage(
     
     mainPanel(
       plotOutput("old_stats"),
-      plotOutput("pitching")
+      a("The data above was collected from The Lahman Baseball Database, which you can find by clicking this text!",
+        href='http://www.seanlahman.com/baseball-archive/statistics/'),
+      plotOutput("pitching"),
+      a("The data above was collected from The Fangraphs Website, which you can find by clicking here!",
+        href='https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=8&season=2018&month=0&season1=2018&ind=0&team=0&rost=0&age=0&filter=&players=0'),
+      h5("Conclusion")
     )
   )
 )
