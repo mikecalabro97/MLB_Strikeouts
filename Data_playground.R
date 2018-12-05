@@ -355,8 +355,15 @@ swing_summaries %>%
 
 #Now I am going to make my app
 #To do that most efficiently, I will make an RDS file to move to my app
+#I will use the old_batting_filtered data from above
+#I will also use the pitch_velocities data
+#I will also use the fastball_percent_summary data
 
 write_rds(old_batting_filtered, path = "mlb_strikeouts_app/final_app_old_data")
+write_rds(pitch_velocities, path = "mlb_strikeouts_app/final_app_velo_data")
+write_rds(fastball_percent_summary, path = "mlb_strikeouts_app/final_app_pitch_type_data")
+
+
 
     
     
