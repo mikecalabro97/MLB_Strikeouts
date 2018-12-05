@@ -19,7 +19,7 @@ https://www.usatoday.com/story/sports/mlb/2017/09/28/whiffle-ball-mlb-sets-strik
 
 # Where to find more cool data and insights
 
-If you want to know the steps I took in finding the right graphs for my shiny app...
+If you want to know the steps I took in finding the right graphs for my SHINY APP (link at bottom of readme)...
 
 RUN MY TEST.RMD!
 
