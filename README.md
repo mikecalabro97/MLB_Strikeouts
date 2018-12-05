@@ -2,7 +2,7 @@
 
 #One Sentence Summary
 
-In every year since 2007, there has been a record set in the MLB for most total strikeouts by all batters in a season, and I want to show how homeruns and pitching trends impact this astounding factoid.
+In every year since 2007, there has been a record set in the MLB for most total strikeouts by all batters in a season, and I want to show how homerun and pitching trends impact this astounding factoid.
 
 #Four Sentence Overview
 
