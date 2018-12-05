@@ -95,12 +95,12 @@ ui <- fluidPage(
       plotOutput("pitching"),
       a("The data above was collected from The Fangraphs Website, which you can find by clicking here!",
         href='https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=8&season=2018&month=0&season1=2018&ind=0&team=0&rost=0&age=0&filter=&players=0'),
-      h5("Conclusion")
+      h6("Conclusion")
     )
   )
 )
 
-# Define server logic required to draw a scatterplot
+# Define server logic required to draw my scatterplots
 
 server <- function(input, output) {
   
@@ -143,14 +143,14 @@ server <- function(input, output) {
       pitch_type_data %>%
         ggplot(aes(x = season, y = avg_fastball_percentage)) + 
         geom_point(aes(color = "Fastball Percentage")) +
-        geom_smooth(method = "lm") +
+        geom_smooth(method = "lm", se = FALSE) +
         labs(x = "Season", y = "Average Fastball Percentage") +
         ggtitle("MLB Pitch Types Since 2008", subtitle = "Pitchers Are Throwing Less Fastballs Than They Used To")
       } else {
         pitch_type_data %>%
           ggplot(aes(x = season, y = avg_curveball_percentage)) + 
           geom_point(aes(color = "Curveball Percentage")) +
-          geom_smooth(method = "lm") +
+          geom_smooth(method = "lm", se = FALSE) +
           labs(x = "Season", y = "Average Curveball Percentage") +
           ggtitle("MLB Pitch Types Since 2008", "Pitchers Are Throwing More Curveballs Than They Used To")
       }
