@@ -51,7 +51,7 @@ pitches_seen - shows what types of pitches batters faced from 2007-2018 (Fangrap
 test.rmd - shows my data finding process, similar to data_playground
 
 
-Finally, here is a link to my shiny app:
+# Finally... a link to my SHINY APP:
 
 https://mikecalabro97.shinyapps.io/mlb_strikeouts_app/
 
