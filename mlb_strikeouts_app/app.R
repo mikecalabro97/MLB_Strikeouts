@@ -1,3 +1,12 @@
+
+#For comments describing all the data shown in the app,
+#As well as more data and visualizations on the subject,
+#VIEW MY TEST.RMD FILE
+
+#It includes my data finding process, and thought procss regarding
+#which statistics I would investigate
+
+
 library(shiny)
 library(tidyverse)
 
@@ -13,11 +22,16 @@ ui <- fluidPage(
   
   titlePanel("MLB Strikeout Data"),
   
-  # Sidebar with a slider input for number of bins 
+  # Sidebar contains a lot
   
   sidebarLayout(
     sidebarPanel(
+      
+      #Everything under Graph 1 and above Graph 2 are meant to effect Graph 1 only
+      
       h4("GRAPH 1"),
+      
+      #Includes a slider input to decide the range of seasons you are viewing
       
       sliderInput("year",
                   "Year Range:",
@@ -25,6 +39,11 @@ ui <- fluidPage(
                   max = 2017,
                   value = c(2005, 2017),
                   sep = ""),
+      
+      #Includes checkbox inputs, from which you can select 1, 2 or all
+      #SO displays strikeouts per at bat
+      #BA displays batting averages, or number of hits per number of at bats
+      #HR displays homeruns per at bat
       
       checkboxInput("so",
                     "Display Strikeouts Per At Bat",
@@ -38,6 +57,8 @@ ui <- fluidPage(
                     "Display Homeruns Per At Bat",
                     value = FALSE),
       
+      #Below are some interesting ways to view the data - things I found insightful
+      
       h4("Interesting Combos to View:"),
       
       h5("1. All Three Stats Since 1918"),
@@ -46,18 +67,26 @@ ui <- fluidPage(
       
       h5("3. HRs and SOs from 2005-2017"),
       
+      #Below is some commentary on the data
+      
       h6("Many people believe that the increase in strikeouts per at bat 
          over the years is due to batters swinging for homeruns more often, 
          sacrificing their contact percentage for a chance to put one out of 
          the park and earn a quick run. However, the strikeout and homerun data
          from the 50s and 60s, and from '05-'17, seem to refute this claim."),
       
+      #Everything below this in the slider is for graph 2
+      
       h4("GRAPH 2"),
+      
+      #These decide which graph you ar going to view - velo's or pitch types
       
       radioButtons("graph2",
                    "Which Pitch Graph Would You Like To View?",
                    c("Pitch Velocity Graph", "Pitch Type Graph"),
                    selected = "Pitch Velocity Graph"),
+      
+      #These checkboxes decide which statistics you view 
       
       h4("Checkboxes For Pitch Velocity Graph"),
       
@@ -77,6 +106,8 @@ ui <- fluidPage(
                     "Display Max Curveball Velocity",
                     value = FALSE),
       
+      #These radio buttons decide if you will look at a graph of fastballs or curveballs
+      
       h4("Radio Buttons For Pitch Type Graph"),
       
       radioButtons("type",
@@ -86,16 +117,37 @@ ui <- fluidPage(
                    inline = TRUE)
     ),
     
-    # Show a plot of the generated distribution
+    #On the main panel, I display two graphs, one for homeruns, strikeouts, and batting average
+    #And one for pitching since 2007
+    #The commentary for the strikeouts and homeruns appears in the side panel
+    #The commentary for the pitching is at the bottom of the page
     
     mainPanel(
+      
+      #Old stats is what displays graph 1
+      
       plotOutput("old_stats"),
+      
+      #citing my sources
+      
       a("The data above was collected from The Lahman Baseball Database, which you can find by clicking this text!",
         href='http://www.seanlahman.com/baseball-archive/statistics/'),
+      
+      #A way to separate the two graphs
+      
       h4("________________________________________________________________"),
+      
+      #Pitching displays the pitching graphs (naturally)
+      
       plotOutput("pitching"),
+      
+      #Links to the source (Same as above)
+      
       a("The data above was collected from The Fangraphs Website, which you can find by clicking here!",
         href='https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=8&season=2018&month=0&season1=2018&ind=0&team=0&rost=0&age=0&filter=&players=0'),
+      
+      #Here is the commentary
+      
       h6("From these pitching graphs, we see a few very clear conclusions."),
       h6("1. Pitchers Are throwing harder. The average fastball velocity jumped from 91 MPH in '07 to 93 MPH in '18. 
          Similarly, The average fastball velocity jumped from just over 75 MPH in '07 to 78 MPH in '18.
@@ -118,6 +170,12 @@ server <- function(input, output) {
   
   output$old_stats <- renderPlot({
     
+    #Uses the old_batting_filtered data from the playground and the test rmd
+    
+    #BIGGEST NOTE - Changing the alpha's to either 0 or 1 is the way that I was
+    #able to either display the lines/points or not display them
+    #You can see this at the end of most of the geom_point and geom_lines
+    
     old_data %>%
       filter(input$year[1] <= year_id) %>%
       filter(input$year[2] >= year_id) %>%
@@ -129,6 +187,10 @@ server <- function(input, output) {
       labs(x = "Season", y = "Percentage")
     
   })
+  
+  #Velo_data is using the pitch_velocities data from the playground and rmd
+  #The large if-elses allow me to display different stats, since I could not
+  #combine them into one table
   
   output$pitching <- renderPlot({
     if (input$graph2 == "Pitch Velocity Graph") {
@@ -151,6 +213,9 @@ server <- function(input, output) {
       ggtitle("MLB Pitch Velocities Since 2008",
               subtitle = "Pitchers Are Throwing Significantly Harder Than They Used To")
     } else {
+      
+      #pitch_type_data is using the fastball_percent_summary data from the playground and rmd
+      
       if (input$type == "Fastball") {
       pitch_type_data %>%
         ggplot(aes(x = season, y = avg_fastball_percentage)) + 
