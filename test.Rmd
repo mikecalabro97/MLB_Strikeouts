@@ -305,7 +305,9 @@ pitches_seen <- read_csv("pitches_seen.csv") %>%
 
 fastball_percent_summary <- pitches_seen %>%
   group_by(season) %>%
-  summarize(avg_fastball_percentage = mean(fb_percent), avg_curveball_percentage = mean(cb_percent))
+  summarize(avg_fastball_percentage = mean(fb_percent),
+            avg_curveball_percentage = mean(cb_percent),
+            avg_changeup_percentage = mean(ch_percent))
 
 fastball_percent_summary %>%
   kable()

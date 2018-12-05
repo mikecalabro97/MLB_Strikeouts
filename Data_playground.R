@@ -353,6 +353,11 @@ swing_summaries %>%
   ggplot(aes(x = season)) +
   geom_point(aes(y = swing_percent, color = ""))
 
+#Now I am going to make my app
+#To do that most efficiently, I will make an RDS file to move to my app
+
+write_rds(old_batting_filtered, path = "mlb_strikeouts_app/final_app_old_data")
+
     
     
     
