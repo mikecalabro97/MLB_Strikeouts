@@ -8,6 +8,7 @@ In every year since 2007, there has been a record set in the MLB for most total 
 
 
 
+
 #Background/Motivation
 
 
@@ -16,7 +17,7 @@ In every year since 2007, there has been a record set in the MLB for most total 
 
 If you want to know the steps I took in finding the right graphs for my shiny app...
 
-RUN THE TEST.RMD!
+RUN MY TEST.RMD!
 
 My comments and graphs should guide you through my process.
 
@@ -43,4 +44,9 @@ pitch_velocities - Shows how fast pitchers threw certain pitches 2007-2018 (Fang
 pitches_seen - shows what types of pitches batters faced from 2007-2018 (Fangraphs)
 
 test.rmd - shows my data finding process, similar to data_playground
+
+
+Finally, here is a link to my shiny app:
+
+https://mikecalabro97.shinyapps.io/mlb_strikeouts_app/
 
