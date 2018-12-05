@@ -1,19 +1,24 @@
 # MLB Strikeouts
 
-#One Sentence Summary
+# One Sentence Summary
 
 In every year since 2007, there has been a record set in the MLB for most total strikeouts by all batters in a season, and I want to show how homerun and pitching trends impact this astounding factoid.
 
-#Four Sentence Overview
+# Four Sentence Overview
 
 
 
 
-#Background/Motivation
+# Background/Motivation
+
+Here are some articles which go into some more detail on the rise in strikeouts:
+
+https://www.washingtonpost.com/news/fancy-stats/wp/2018/04/05/its-only-april-and-its-clear-the-mlb-strikeouts-record-will-again-be-threatened/?utm_term=.72d53914f899
+
+https://www.usatoday.com/story/sports/mlb/2017/09/28/whiffle-ball-mlb-sets-strikeout-record-for-10th-year-in-row/106068922/
 
 
-
-#Where to find more cool data and insights
+# Where to find more cool data and insights
 
 If you want to know the steps I took in finding the right graphs for my shiny app...
 
@@ -25,7 +30,7 @@ Hope you enjoy! Go Red Sox!
 
 --
 
-#What's in my repo:
+# What's in my repo:
 
 Data_playground - scratch doc for looking through data
 
