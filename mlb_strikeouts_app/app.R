@@ -184,7 +184,7 @@ server <- function(input, output) {
       geom_line(aes(y = mean_ba, color = "Mean BA"), alpha = input$ba) + 
       geom_line(aes(y = hr_per_ab, color = "HR per AB"), alpha = input$hr) +
       ggtitle("MLB Per At Bat Statistics Over The Years") +
-      labs(x = "Season", y = "Percentage")
+      labs(x = "Season", y = "Percentage (SOs/Hits/HRs Per At Bat)")
     
   })
   
@@ -209,7 +209,7 @@ server <- function(input, output) {
       geom_point(aes(y = max_fastball_velo, color = "Max Fastball Velo"), alpha = input$fb_max) +
       geom_point(aes(y = avg_curveball_velo, color = "Average Curveball Velo"), alpha = input$cu_avg) +
       geom_point(aes(y = max_curveball_velo, color = "Max Curveball Velo"), alpha = input$cu_max) +
-      labs(x = "Season", y = "Velocity") +
+      labs(x = "Season", y = "Velocity (Miles Per Hour)") +
       ggtitle("MLB Pitch Velocities Since 2008",
               subtitle = "Pitchers Are Throwing Significantly Harder Than They Used To")
     } else {
