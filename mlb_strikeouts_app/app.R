@@ -92,10 +92,22 @@ ui <- fluidPage(
       plotOutput("old_stats"),
       a("The data above was collected from The Lahman Baseball Database, which you can find by clicking this text!",
         href='http://www.seanlahman.com/baseball-archive/statistics/'),
+      h4("________________________________________________________________"),
       plotOutput("pitching"),
       a("The data above was collected from The Fangraphs Website, which you can find by clicking here!",
         href='https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=8&season=2018&month=0&season1=2018&ind=0&team=0&rost=0&age=0&filter=&players=0'),
-      h6("Conclusion")
+      h6("From these pitching graphs, we see a few very clear conclusions."),
+      h6("1. Pitchers Are throwing harder. The average fastball velocity jumped from 91 MPH in '07 to 93 MPH in '18. 
+         Similarly, The average fastball velocity jumped from just over 75 MPH in '07 to 78 MPH in '18.
+         This may not seem like too significant of an increase, but from a hitter's perspective this is a big change."),
+      h6("2. Pitchers are throwing less fastballs and more curveballs. We see pretty clearly from the graphs that 
+         pitchers are starting to become more comfortable throwing curveballs to batters. A typical reason why a pitcher would
+         use a fastball so often is because it is more accurate, and easier to place within a small window. Since curveballs are rising,
+         it seems plausible that pitchers are becoming more confident in the accuracy of their curveballs, a pitch which is harder to hit."),
+      h6("With these facts in mind, the data seems to support a hypothesis that the main reason why players are striking out more often
+         is because pitchers are improving their skills at a rate which batters cannot keep up with."),
+      h6("Shiny App Created by Michael Calabro")
+      
     )
   )
 )
