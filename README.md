@@ -54,3 +54,6 @@ test.rmd - shows my data finding process, similar to data_playground
 
 https://mikecalabro97.shinyapps.io/mlb_strikeouts_app/
 
+
+This is a Gov 1005 Final Project, completed by Mike Calabro
+
