@@ -816,7 +816,9 @@ pitches_seen &lt;- read_csv(&quot;pitches_seen.csv&quot;) %&gt;%
 
 fastball_percent_summary &lt;- pitches_seen %&gt;%
   group_by(season) %&gt;%
-  summarize(avg_fastball_percentage = mean(fb_percent), avg_curveball_percentage = mean(cb_percent))
+  summarize(avg_fastball_percentage = mean(fb_percent),
+            avg_curveball_percentage = mean(cb_percent),
+            avg_changeup_percentage = mean(ch_percent))
 
 fastball_percent_summary %&gt;%
   kable()</code></pre>
@@ -826,6 +828,7 @@ fastball_percent_summary %&gt;%
 <th align="right">season</th>
 <th align="right">avg_fastball_percentage</th>
 <th align="right">avg_curveball_percentage</th>
+<th align="right">avg_changeup_percentage</th>
 </tr>
 </thead>
 <tbody>
@@ -833,61 +836,73 @@ fastball_percent_summary %&gt;%
 <td align="right">2007</td>
 <td align="right">0.6006790</td>
 <td align="right">0.0865432</td>
+<td align="right">0.1142593</td>
 </tr>
 <tr class="even">
 <td align="right">2008</td>
 <td align="right">0.5955102</td>
 <td align="right">0.0885034</td>
+<td align="right">0.1008163</td>
 </tr>
 <tr class="odd">
 <td align="right">2009</td>
 <td align="right">0.5932468</td>
 <td align="right">0.0906494</td>
+<td align="right">0.1031818</td>
 </tr>
 <tr class="even">
 <td align="right">2010</td>
 <td align="right">0.5744966</td>
 <td align="right">0.0926846</td>
+<td align="right">0.1093960</td>
 </tr>
 <tr class="odd">
 <td align="right">2011</td>
 <td align="right">0.5662759</td>
 <td align="right">0.0957931</td>
+<td align="right">0.1077931</td>
 </tr>
 <tr class="even">
 <td align="right">2012</td>
 <td align="right">0.5651748</td>
 <td align="right">0.1063636</td>
+<td align="right">0.1010490</td>
 </tr>
 <tr class="odd">
 <td align="right">2013</td>
 <td align="right">0.5676429</td>
 <td align="right">0.1011429</td>
+<td align="right">0.1041429</td>
 </tr>
 <tr class="even">
 <td align="right">2014</td>
 <td align="right">0.5717123</td>
 <td align="right">0.0991781</td>
+<td align="right">0.1034932</td>
 </tr>
 <tr class="odd">
 <td align="right">2015</td>
 <td align="right">0.5681560</td>
 <td align="right">0.0938298</td>
+<td align="right">0.1084397</td>
 </tr>
 <tr class="even">
 <td align="right">2016</td>
 <td align="right">0.5600000</td>
 <td align="right">0.1007534</td>
+<td align="right">0.1052740</td>
 </tr>
 <tr class="odd">
 <td align="right">2017</td>
 <td align="right">0.5454167</td>
 <td align="right">0.1090972</td>
+<td align="right">0.1075694</td>
 </tr>
 <tr class="even">
 <td align="right">2018</td>
 <td align="right">0.5417857</td>
 <td align="right">0.1050000</td>
+<td align="right">0.1131429</td>
 </tr>
 </tbody>
 </table>
