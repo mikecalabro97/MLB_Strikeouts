@@ -33,15 +33,15 @@ Hope you enjoy! Go Red Sox!
 
 Data_playground - scratch doc for looking through data
 
-Lahman_Batting - MLB batting stats from 1871-2017 (From Sean Lahman's Baseball Database)
+Lahman_Batting - MLB batting stats from 1871-2017 (From Sean Lahman's Baseball Database http://www.seanlahman.com/)
 
 Lahman_Salaries - MLB salary stats from 1985-2016 (Lahman)
 
 Lahman_pitch - MLB pitching stats from 1871-2017 (Lahman)
 
-advanced_batting_stats - MLB batting stats 2007-2018, with metrics related to lauch angle and exit velocity, amongst others (From Fangraphs.com)
+advanced_batting_stats - MLB batting stats 2007-2018, with metrics related to lauch angle and exit velocity, amongst others (From Fangraphs.com https://www.fangraphs.com/leaders.aspx?pos=all&stats=bat&lg=all&qual=y&type=8&season=2018&month=0&season1=2018&ind=0&team=0&rost=0&age=0&filter=&players=0)
 
-exit velocity - Pure exit velocity data from 2015-2018 (Using Statcast data)
+exit velocity - Pure exit velocity data from 2015-2018 (Using Statcast data https://baseballsavant.mlb.com/statcast_search)
 
 pitch_velocities - Shows how fast pitchers threw certain pitches 2007-2018 (Fangraphs)
 
