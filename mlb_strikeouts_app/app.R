@@ -14,7 +14,7 @@ old_data <- read_rds("final_app_old_data")
 velo_data <- read_rds("final_app_velo_data")
 pitch_type_data <- read_rds("final_app_pitch_type_data")
 
-# Define UI for application that draws a histogram
+# Define UI for application that draws a two scatterplots
 
 ui <- fluidPage(
   
@@ -22,7 +22,7 @@ ui <- fluidPage(
   
   titlePanel("MLB Strikeout Data"),
   
-  # Sidebar contains a lot
+  # Sidebar contains a lot of sliders, checkboxes, radio buttons and text
   
   sidebarLayout(
     sidebarPanel(
@@ -41,9 +41,9 @@ ui <- fluidPage(
                   sep = ""),
       
       #Includes checkbox inputs, from which you can select 1, 2 or all
-      #SO displays strikeouts per at bat
-      #BA displays batting averages, or number of hits per number of at bats
-      #HR displays homeruns per at bat
+      #so displays strikeouts per at bat
+      #ba displays batting averages, or number of hits per number of at bats
+      #hr displays homeruns per at bat
       
       checkboxInput("so",
                     "Display Strikeouts Per At Bat",
@@ -90,6 +90,10 @@ ui <- fluidPage(
       
       h4("Checkboxes For Pitch Velocity Graph"),
       
+      #For fb_max and cu_max, the max is NOT referring to the fastest thrown pitch that season
+      #Instead, it is the highest average fast/curveball speed of the single pitcher in the MLB
+      #who throws the fastest of each respective pitch (on average).
+      
       checkboxInput("fb_avg",
                     "Display Average Fastball Velocity",
                     value = TRUE),
@@ -118,17 +122,17 @@ ui <- fluidPage(
     ),
     
     #On the main panel, I display two graphs, one for homeruns, strikeouts, and batting average
-    #And one for pitching since 2007
-    #The commentary for the strikeouts and homeruns appears in the side panel
-    #The commentary for the pitching is at the bottom of the page
+    #And one for pitching since 2007.
+    #The commentary for the strikeouts and homeruns appears in the side panel.
+    #The commentary for the pitching is at the bottom of the page.
     
     mainPanel(
       
-      #Old stats is what displays graph 1
+      #old_stats is what displays graph 1
       
       plotOutput("old_stats"),
       
-      #citing my sources
+      #Citing my sources
       
       a("The data above was collected from The Lahman Baseball Database, which you can find by clicking this text!",
         href='http://www.seanlahman.com/baseball-archive/statistics/'),
@@ -170,7 +174,7 @@ server <- function(input, output) {
   
   output$old_stats <- renderPlot({
     
-    #Uses the old_batting_filtered data from the playground and the test rmd
+    #Uses the old_batting_filtered data from the playground and the test.rmd
     
     #BIGGEST NOTE - Changing the alpha's to either 0 or 1 is the way that I was
     #able to either display the lines/points or not display them

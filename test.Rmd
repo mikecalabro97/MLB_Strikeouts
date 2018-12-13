@@ -198,8 +198,6 @@ salaries_and_stats
 #2. Are the batters getting paid the most becoming better homerun hitters? Or OBP guys? etc
 #3. Are there other trends I can find?
 
-#The data seems to be slightly off here, but I think it is good enough to stick with
-
 total_max_salary_players <- salaries_and_stats %>%
   group_by(year_id) %>% 
   summarize(total_players = n()) 
@@ -223,8 +221,12 @@ total_max_salary_pitchers %>%
 #And the uptick may be accounted for by the growing number of teams in the MLB
 #Not worth further investigation
 
-#Let's look at the batters and their stats now
-#I'm gonna peek at the same stats as I had above, but only for these top players
+#The thought was that maybe more teams were starting to make thwir highest paid players
+#a starting pitcher, thus pointing towards their increased value/dominance
+#but that is not what the data shows
+
+#Let's look at the batters and their stats now.
+#I'm gonna peek at the same stats as I had above (HR, SO, BA), but only for these top players
 
 top_paid_batter_totals <- salaries_and_stats %>%
   filter(is.na(w)) %>%
@@ -278,6 +280,8 @@ curve_velo_summaries %>%
   ggplot(aes(x = season)) +
   geom_point(aes(y = avg_curveball_velo, color = "Average Curveball Velo")) +
   geom_point(aes(y = max_curveball_velo, color = "Max Curveball Velo"))
+
+#THESE are intriguing.
 
 #Now I am going to add some advanced batting stats from fangraphs
 #I want to see if fly ball % has increased over the years since 2007
@@ -363,5 +367,12 @@ swing_summaries %>%
 swing_summaries %>%
   ggplot(aes(x = season)) +
   geom_point(aes(y = swing_percent, color = ""))
+
+#There are some significant trends in this data, but I don't think I will add to my app.
+#But I will say these stats could support either theory
+#A. Players are swinging for homeruns, thus swinging more and making less contact.
+#B. Pitchers are getting better, thus making batters swing more and make less contact.
+
+
 ```
 
