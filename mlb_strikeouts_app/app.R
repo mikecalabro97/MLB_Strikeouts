@@ -156,7 +156,7 @@ ui <- fluidPage(
       h6("1. Pitchers Are throwing harder. The average fastball velocity jumped from 91 MPH in '07 to 93 MPH in '18. 
          Similarly, The average fastball velocity jumped from just over 75 MPH in '07 to 78 MPH in '18.
          This may not seem like too significant of an increase, but from a hitter's perspective this is a big change."),
-      h6("2. Pitchers are throwing less fastballs and more curveballs. We see pretty clearly from the graphs that 
+      h6("2. Pitchers are throwing less fastballs and more curveballs (along with other offspeed pitches). We see pretty clearly from the graphs that 
          pitchers are starting to become more comfortable throwing curveballs to batters. A typical reason why a pitcher would
          use a fastball so often is because it is more accurate, and easier to place within a small window. Since curveballs are rising,
          it seems plausible that pitchers are becoming more confident in the accuracy of their curveballs, a pitch which is harder to hit."),
